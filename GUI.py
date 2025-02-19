@@ -10,12 +10,12 @@ class TodoApp(QWidget):
         
         self.layout = QVBoxLayout()
         self.task_input = QLineEdit(self)
-        self.task_input.setPlaceholderText("タスクを入力")  # 入力フィールドのプレースホルダー
+        self.task_input.setPlaceholderText("タスクを入力")  
         
         self.add_button = QPushButton("追加", self)
         self.add_button.clicked.connect(self.add_task)  # 追加ボタンのクリックイベント
         
-        self.task_list = QListWidget(self)  # タスクリストを表示するウィジェット
+        self.task_list = QListWidget(self) 
         
         self.delete_button = QPushButton("削除", self)
         self.delete_button.clicked.connect(self.delete_task)  # 削除ボタンのクリックイベント
@@ -26,9 +26,9 @@ class TodoApp(QWidget):
         self.layout.addWidget(self.task_list)
         self.layout.addWidget(self.delete_button)
         
-        self.setLayout(self.layout)  # レイアウトを適用
-        self.load_tasks()  # 起動時に保存されたタスクをロード
-    
+        self.setLayout(self.layout)  
+        self.load_tasks()  
+
     def add_task(self):
         task = self.task_input.text().strip()  # 入力テキストを取得し、空白を削除
         if task:
@@ -39,7 +39,7 @@ class TodoApp(QWidget):
             QMessageBox.warning(self, "警告", "タスクを入力してください！")  # 入力が空なら警告を表示
     
     def delete_task(self):
-        selected_task = self.task_list.currentRow()  # 選択された行のインデックスを取得
+        selected_task = self.task_list.currentRow()  
         if selected_task >= 0:
             self.task_list.takeItem(selected_task)  # 選択されたタスクを削除
             self.save_tasks()  # 削除後にタスクを保存
